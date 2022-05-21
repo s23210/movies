@@ -1,5 +1,7 @@
 package pl.pjatk.movies.domain;
 
+import org.hibernate.type.descriptor.sql.TinyIntTypeDescriptor;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,15 +14,24 @@ public class Movie {
     private String description;
     @Enumerated(EnumType.STRING)
     private Genres genre;
+    private Boolean isAvailable = false;
+
+    public Movie(Integer id, String title, String description, Genres genre, Boolean isAvailable) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.genre = genre;
+        this.isAvailable = isAvailable;
+    }
+
+    public Movie() {
+    }
 
     public Movie(Integer id, String title, String description, Genres genre) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.genre = genre;
-    }
-
-    public Movie() {
     }
 
     public Integer getId() {
@@ -37,5 +48,29 @@ public class Movie {
 
     public Enum getGenre() {
         return genre;
+    }
+
+    public Boolean getAvailable() {
+        return isAvailable;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setGenre(Genres genre) {
+        this.genre = genre;
+    }
+
+    public void setAvailable(Boolean available) {
+        isAvailable = available;
     }
 }

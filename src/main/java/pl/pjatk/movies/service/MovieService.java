@@ -43,4 +43,10 @@ public class MovieService {
     public void deleteMovie(Integer id) {
         movieRepository.deleteById(id);
     }
+
+    public Movie makeAvailable(Integer id) {
+        Movie movie = getMovieById(id);
+        movie.setAvailable(true);
+        return movieRepository.save(movie);
+    }
 }
