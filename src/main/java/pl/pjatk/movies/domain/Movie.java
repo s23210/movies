@@ -1,19 +1,26 @@
 package pl.pjatk.movies.domain;
 
-import org.hibernate.type.descriptor.sql.TinyIntTypeDescriptor;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "movie")
+@ApiModel(value = "movie", description = "Movie from database")
 public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty(value = "Unique id of the movie", required = true)
     private Integer id;
+    @ApiModelProperty(value = "Title of the movie", required = true)
     private String title;
+    @ApiModelProperty(value = "Description of the movie", required = true)
     private String description;
     @Enumerated(EnumType.STRING)
+    @ApiModelProperty(value = "Genre of the movie", required = true)
     private Genres genre;
+    @ApiModelProperty(value = "Availability of the movie")
     private Boolean isAvailable = false;
 
     public Movie(Integer id, String title, String description, Genres genre, Boolean isAvailable) {
