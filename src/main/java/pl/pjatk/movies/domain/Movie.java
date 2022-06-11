@@ -53,7 +53,7 @@ public class Movie {
         return description;
     }
 
-    public Enum getGenre() {
+    public Genres getGenre() {
         return genre;
     }
 
