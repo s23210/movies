@@ -49,4 +49,10 @@ public class MovieService {
         movie.setAvailable(true);
         return movieRepository.save(movie);
     }
+
+    public Movie makeNotAvailable(Integer id) {
+        Movie movie = getMovieById(id);
+        movie.setAvailable(false);
+        return movieRepository.save(movie);
+    }
 }
